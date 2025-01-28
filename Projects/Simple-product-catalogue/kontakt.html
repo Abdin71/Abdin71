@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+    
+        <title> My project</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css"> 
+    </head>
+    <body>
+        <header>
+            <div class="nav"> 
+                <h1>BaraSoffa</h1>
+            </div>
+            <div class="nav">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Hem</a></li>
+                        <li><a href="om.html">Om oss</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="produkter.html">Produkter</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+        </header>
+        <main>
+            <div class="rad">
+                <div class="kort-stor">
+                    <h1> Kontakt </h1>
+                    <figure>
+                        <img src="bildp7.jpg" alt="bild">
+                        <figcaption><a href="https://flic.kr/p/2kuy4Va" target="_blank"> Tavla </a> by <a href="https://www.flickr.com/photos/jayjayoh/" target="_blank">jayjayoh</a> <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></figcaption>
+                    </figure>
+                    <h2> Kom i kontakt med oss </h2>
+                    <p>
+                        Vi hjälper om du har funderingar om våra soffor. Kontakta oss om du är intresserad av våra soffor.
+                    </p>
+                    <ol>
+                        <li>Välj en soffa med variant</li>
+                        <li>Fyll i formulär</li>
+                        <li>Din förfrågan behandlas inom 48h</li>
+                        <li>Kolla din e-post</li>
+                        
+                    </ol>
+                
+                    <form action="https://wwwlab.iit.his.se/bjuj/webbplatsdesign/recieve/recieve.php" method="POST">
+                        <div id="forms">
+                            <h2>Fyll i formulär </h2>
+                            <label for="namn">Namn*:</label>
+                            <input type="text" name="namn" id="namn" required><br><br>
+            
+                            <label for="epost">E-post*:</label>
+                            <input type="email" name="epost" id="epost" required><br><br>
+                            
+                            <label for="telefon">Telefonnummer*:</label>
+                            <input type="tel" name="tel" id="telefon" required><br><br>
+            
+                            <label for="soffa">Vilken soffa?</label>
+                            <select name="soffa" id="soffa">
+                                <option value="Soffa1">Divansoffa variant 1</option>
+                                <option value="Soffa2">Rak soffa variant 1</option>
+                                <option value="Soffa3">Divansoffa variant 2</option>
+                                <option value="Soffa4">Rak soffa variant 2</option>
+                            </select><br><br>
+            
+                            <label for="meddelande">Meddelande:</label>
+                            <textarea name="meddelande" ></textarea><br><br>
+                            <input type="submit" id="meddelande" value="submit">
+            
+                        </div>
+                    </form>
+                </div>
+            </div>  
+        </main>
+        <div class="fabicon">
+            <span class="material-icons-round">
+            <a href="kontakt.html"><img src="outline_email_black_48dp.png" alt="fabicon"></a>
+            </span>
+        </div>
+
+        <footer>
+            <div>BaraSoffa founded 1998 .</div>
+            <div>
+                Address: 
+                <address>Fabriksgatan 11C 110 00 Uppsala </address></div>
+        </footer>
+
+        
+    </body>
+</html>
