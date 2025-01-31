@@ -12,13 +12,13 @@ The frontend is developed using React.js for an interactive user experience.
 The backend is powered by C#.NET to handle API requests and data management.
 
 ### Key Features:
-✅ View a list of books with detailed information.
-✅ Add new books to the list of books.
-✅ Edit and update book details.
-✅ Delete books from list of books.
-✅ View a list of quotes with detailed information.
-✅ Add new quote to the list of quotes.
-✅ Edit and update quote details.
+- ✅ View a list of books with detailed information.
+- ✅ Add new books to the list of books.
+- ✅ Edit and update book details.
+- ✅ Delete books from list of books.
+- ✅ View a list of quotes with detailed information.
+- ✅ Add new quote to the list of quotes.
+- ✅ Edit and update quote details.
 
 
 This system is ideal for managing personal libraries, tracking books, or serving as a foundation for larger inventory management applications. BooksCRUD is designed with security in mind, ensuring data protection through user authentication. The backend is secured using JWT authentication, preventing unauthorized access.
@@ -56,13 +56,13 @@ This system is ideal for managing personal libraries, tracking books, or serving
 This project was built with:
 
 ### Frontend
-React.js – UI development library.
-React Router – Enables navigation within the app.
-Axios – Handles API requests.
+- React.js – UI development library.
+- React Router – Enables navigation within the app.
+- Bootstrap – CSS Framework for developing responsive websites.
 ### Backend
-ASP.NET 8 – Framework for building scalable REST APIs.
-Entity Framework Core – ORM for database operations.
-JWT Authentication – Secure user authentication.
+- ASP.NET 8 – Framework for building scalable REST APIs.
+- Entity Framework Core – ORM for database operations.
+- JWT Authentication – Secure user authentication.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
