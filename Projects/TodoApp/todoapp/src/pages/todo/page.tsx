@@ -193,6 +193,12 @@ const Todo = () => {
                         <div className="table-responsive-sm">
                             <div className="d-flex justify-content-end"> </div>
                             <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        {todoKeys.map((name, index) => (<th key={index} scope="col">{name}</th>))}
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {
                                         todoData && todoData.map((todo, index) => (
@@ -202,12 +208,12 @@ const Todo = () => {
                                                 <td>{todo.date}</td>
                                                 <td >{todo.tag}</td>
                                                 <td>{todo.priority}</td>
-                                                <td style={{ width: '10%' }}><Button variant="outline-primary" onClick={() => navigate("/editTodo", { state: { id: todo.id } })}><FontAwesomeIcon icon={faEdit} size="xs" title="Edit" className="fa-solid mx-2" /></Button></td>
+                                                <td style={{ width: '5%' }}><Button variant="outline-primary" onClick={() => navigate("/editTodo", { state: { id: todo.id } })}><FontAwesomeIcon icon={faEdit} size="xs" title="Edit" className="fa-solid mx-2" /></Button></td>
 
                                                 {isLoggedIn ? (
-                                                    <td><Button onClick={() => handleOpenModal(todo.id)} id="exampleModal" variant="outline-danger"><FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" /></Button></td>
+                                                    <td style={{ width: '5%' }}><Button onClick={() => handleOpenModal(todo.id)} id="exampleModal" variant="outline-danger"><FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" /></Button></td>
                                                 ) : (
-                                                    <td>
+                                                    <td style={{ width: '5%' }}>
                                                         <Link to="/signin">
                                                             <Button type="button" variant="outline-danger" className="btn btn-secondary">
                                                                 <FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" />
@@ -273,6 +279,12 @@ const Todo = () => {
                         <div className="table-responsive-sm">
                             <div className="d-flex justify-content-end"> </div>
                             <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        {todoKeys.map((name, index) => (<th key={index} scope="col">{name}</th>))}
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {
                                         todoData && todoData.map((todo, index) => (
@@ -282,15 +294,15 @@ const Todo = () => {
                                                 <td>{todo.date}</td>
                                                 <td >{todo.tag}</td>
                                                 <td>{todo.priority}</td>
-                                                <td style={{ width: '10%' }}><Button variant="outline-primary" onClick={() => navigate("/editTodo", { state: { id: todo.id } })}><FontAwesomeIcon icon={faEdit} size="xs" title="Edit" className="fa-solid mx-2" /></Button></td>
+                                                <td style={{ width: '5%' }}><Button variant="outline-primary" onClick={() => navigate("/editTodo", { state: { id: todo.id } })}><FontAwesomeIcon icon={faEdit} size="xs" title="Edit" className="fa-solid mx-2" /></Button></td>
 
                                                 {isLoggedIn ? (
                                                     <>
-                                                        <td><Button onClick={() => handleOpenModal(todo.id)} id="exampleModal" variant="outline-danger"><FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" /></Button></td>
-                                                        <td><Button onClick={() => handleArchive(todo.id)} variant="outline-warning"><FontAwesomeIcon icon={faArchive} size="xs" title="Archive" className="fa-solid mx-2" /></Button></td>
+                                                        <td style={{ width: '5%' }}><Button onClick={() => handleOpenModal(todo.id)} id="exampleModal" variant="outline-danger"><FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" /></Button></td>
+                                                        <td style={{ width: '5%' }}><Button onClick={() => handleArchive(todo.id)} variant="outline-warning"><FontAwesomeIcon icon={faArchive} size="xs" title="Archive" className="fa-solid mx-2" /></Button></td>
                                                     </>
                                                 ) : (
-                                                    <td>
+                                                    <td style={{ width: '5%' }}>
                                                         <Link to="/signin">
                                                             <Button type="button" variant="outline-danger" className="btn btn-secondary">
                                                                 <FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" />
