@@ -101,6 +101,12 @@ const Todo = () => {
                         <div className="table-responsive-sm">
                             <div className="d-flex justify-content-end"> </div>
                             <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        {todoKeys.map((name, index) => (<th key={index} scope="col">{name}</th>))}
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     {
                                         todoData && todoData.map((todo, index) => (
@@ -111,16 +117,16 @@ const Todo = () => {
                                                 <td>{todo.date}</td>
                                                 <td >{todo.tag}</td>
                                                 <td>{todo.priority}</td>
-                                                <td style={{ width: '10%' }}><Button variant="outline-primary" onClick={() => navigate("/editTodo", { state: { id: todo.id } })}><FontAwesomeIcon icon={faEdit} size="xs" title="Edit" className="fa-solid mx-2" /></Button></td>
+                                                <td style={{ width: '5%' }}><Button variant="outline-primary" onClick={() => navigate("/editTodo", { state: { id: todo.id } })}><FontAwesomeIcon icon={faEdit} size="xs" title="Edit" className="fa-solid mx-2" /></Button></td>
 
                                                 {isLoggedIn ? (
                                                     <>
-                                                        <td><Button onClick={() => handleOpenModal(todo.id)} variant="outline-danger"><FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" /></Button></td>
-                                                        <td><Button onClick={() => handleArchive(todo.id)} variant="outline-warning"><FontAwesomeIcon icon={faArchive} size="xs" title="Archive" className="fa-solid mx-2" /></Button></td>
+                                                        <td style={{ width: '5%' }}><Button onClick={() => handleOpenModal(todo.id)} variant="outline-danger"><FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" /></Button></td>
+                                                        <td style={{ width: '5%' }}><Button onClick={() => handleArchive(todo.id)} variant="outline-warning"><FontAwesomeIcon icon={faArchive} size="xs" title="Archive" className="fa-solid mx-2" /></Button></td>
                                                     </>
                                                 ) : (
 
-                                                    <td>
+                                                    <td style={{ width: '5%' }}>
                                                         <Link to="/signin">
                                                             <Button type="button" variant="outline-danger" className="btn btn-secondary">
                                                                 <FontAwesomeIcon icon={faTrash} size="xs" title="Delete" className="fa-solid mx-2" />
@@ -350,51 +356,27 @@ const Todo = () => {
 };
 export default Todo;
 
-const book =
-    [
-        {
-            "title": "book",
-            "author": "desc",
-            "publication_date": "2021-11-01",
-            "publisher": "ABZ",
-            "isbn": "971827554412",
-            "pages": 100,
-            "genre": "Fiction",
-            "date_added": "2021-11-01"
-        },
-        {
-            "title": "bookbook",
-            "publication_date": "2021-11-01",
-            "author": "desc",
-            "publisher": "ABZ",
-            "isbn": "971827554412",
-            "pages": 100,
-            "genre": "Fiction",
-            "date_added": "2021-11-01"
-        }
-    ];
-
-const booksKeys = Object.keys(book[0]);
-
 const todos = [{
-    "id": "string",
-    "title": "string",
-    "date": "datetime",
-    "tag": "string",
+    "id": "123",
+    "title": "Make a project proposal ",
+    "date": "2025-02-01",
+    "tag": "Coding projects",
     "status": "Completed",
-    "priority": "string",
-    "created_at": "datetime",
-    "updated_at": "datetime"
+    "priority": "Medium",
+    "created_at": "2025-02-01",
+    "updated_at": "2025-02-01"
 
 },
 {
-    "id": "string",
-    "title": "string",
-    "date": "datetime",
-    "tag": "string",
-    "status": "Completed || In progress",
-    "priority": "string",
-    "created_at": "datetime",
-    "updated_at": "datetime"
+    "id": "124",
+    "title": "Send draft of project proposal",
+    "date": "2025-02-01",
+    "tag": "Coding projects",
+    "status": "Completed",
+    "priority": "Medium",
+    "created_at": "2025-02-01",
+    "updated_at": "2025-02-01"
 
-}]
+}];
+
+const todoKeys = ["Status", "Title", "Date", "Tag", "Priority",]
