@@ -1,68 +1,56 @@
+import { useState } from "react";
 import "./App.css"
-import { Counter } from "./features/counter/Counter"
-import { Quotes } from "./features/quotes/Quotes"
-import logo from "./logo.svg"
+import ProductList from "./app/components/ProductList"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
+
+  const [showProductList, setShowProductList] = useState(false);
+
+  const handleClick = () => {
+    setShowProductList(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Quotes />
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://reselect.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Reselect
-          </a>
-        </span>
-      </header>
+    <div className="container">
+      <div className={`d-flex align-items-center ${showProductList ? 'invisible' : 'visible'}`}>
+        <div className="mt-3"></div>
+        <div className="container">
+          <div className="container">
+            <h1>Welcome To shopping lastest shoes</h1>
+            <div className="mt-3"></div>
+            <p>Get lastest shoes available online</p>
+
+            <button className="btn btn outline-primary" onClick={handleClick}>
+              Shop
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div className={`container ${showProductList ? 'visible' : 'invisible'}`}>
+        <ProductList products={products} />
+      </div>
     </div>
   )
 }
 
-export default App
+export default App;
+
+const products = [
+  {
+    "id": "1",
+    "name": "Sandels",
+    "price": 20,
+    "image": "",
+    "description": ""
+  },
+  {
+    "id": "2",
+    "name": "Winter boots",
+    "price": 100,
+    "image": "",
+    "description": ""
+  }
+]

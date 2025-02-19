@@ -15,7 +15,12 @@ The backend is powered by C#.NET to handle API requests and data management.
 - ✅ View a list of todos with detailed information.
 - ✅ Add new Todo to the list of todos.
 - ✅ Edit and update todo details.
-- ✅ Delete todos from list of todos.
+- ✅ Delete todo from list of todos.
+- ✅ View a list of completed todos.
+- ✅ Move todo from to completed.
+- ✅ View a list of overdue todos.
+
+
 
 This system is ideal for managing a todo list, tracking todos, TodosAPP is designed with security in mind, ensuring data protection through user authentication. The backend is secured using JWT authentication, preventing unauthorized access.
 
@@ -77,7 +82,7 @@ Install project dependencies on your local machine. These commands install the n
 ### Frontend
 1. Go to project directory
     ```sh
-   cd Frontend/todoapp
+   cd Todo/todoapp
    ```
 2. Install dependencies
    ```sh
@@ -93,7 +98,7 @@ Run frontend using docker:
 ### Backend 
 1. Go to project directory
     ```sh
-   cd Backend/api
+   cd Todo/Backend/api
    ```
 2. Install dependencies
    ```sh
