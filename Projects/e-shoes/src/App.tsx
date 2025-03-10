@@ -7,7 +7,7 @@ const products = [
   {
     "id": "1",
     "name": "Sandels",
-    "price": 20,
+    "price": 200,
     "image": "https://images.unsplash.com/photo-1626947346165-4c2288dadc2a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNob2V8ZW58MHx8MHx8fDA%3D",
     "description": ""
   },
@@ -19,30 +19,30 @@ const products = [
     "description": ""
   },
   {
-    "id": "1",
+    "id": "3",
     "name": "Sandels",
-    "price": 20,
+    "price": 200,
     "image": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNob2V8ZW58MHx8MHx8fDA%3D",
     "description": ""
   },
   {
-    "id": "2",
+    "id": "4",
     "name": "Winter boots",
     "price": 100,
     "image": "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNob2V8ZW58MHx8MHx8fDA%3D",
     "description": ""
   },
   {
-    "id": "1",
+    "id": "5",
     "name": "Sandels",
-    "price": 20,
+    "price": 200,
     "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "description": ""
   },
   {
-    "id": "2",
+    "id": "6",
     "name": "Winter boots",
-    "price": 100,
+    "price": 300,
     "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hvZXxlbnwwfHwwfHx8MA%3D%3D",
     "description": ""
   },
@@ -59,7 +59,7 @@ const App = () => {
 
   return (
 
-    <div className="container-fluid position-relative">
+    <div className="container-fluid position-relative mx-0 px-0">
       <div
         className={`jumbotron jumbotron-fluid d-flex justify-content-center align-items-center ${showProductList ? 'd-none' : 'd-block min-vh-100'} position-relative`}
       >
@@ -79,7 +79,7 @@ const App = () => {
           <p className="lead">Get lastest shoes available online</p>
           <hr className="my-4" />
           <p className="lead">
-            <button className="btn btn-primary btn-lg" onClick={handleClick}>Go to shop</button>
+            <button className="btn btn-success btn-lg" onClick={handleClick}>Go to shop</button>
           </p>
         </div>
 
@@ -89,7 +89,7 @@ const App = () => {
           <p className="mb-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
       </div>
-      <div className={`container-fluid ${showProductList ? 'd-block min-vh-100' : 'd-none'}`}>
+      <div className={`container-fluid px-0 ${showProductList ? 'd-block min-vh-100' : 'd-none'}`}>
         <ProductList products={products} />
       </div>
     </div>
