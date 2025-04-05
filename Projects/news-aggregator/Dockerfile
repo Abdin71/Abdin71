@@ -4,7 +4,7 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 ARG VITE_APP_ENV
 ENV VITE_APP_ENV=$VITE_APP_ENV
