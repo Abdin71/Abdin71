@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-white text-black py-8 px-4 text-sm text-center border-t">
+        <footer className="text-black py-8 px-4 text-sm text-center border-gray-200 border-t">
             {/* Links Section */}
             <div className="flex gap-6 justify-center text-gray-600 hover:text-gray-900">
                 <a href="#about" className="hover:text-gray-900">About</a>

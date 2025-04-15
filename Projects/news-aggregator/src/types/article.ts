@@ -3,18 +3,18 @@ export interface Article {
     title: string;
     imageUrl: string;
     source: {
+        id: string;
         name: string;
         logoUrl: string;
     };
     author: {
-        "id": "author_007",
-        "name": "Jane Doe",
-        "profileUrl": "https://example.com/authors/jane-doe"
+        name: string;
+        profileUrl: string;
     };
     timestamp: Date;
     summary: string;
     tags: string[];
-    content?: string; // Optional if you want full article content
+    content?: string;
     url: string;
     isBookmarked: boolean;
 

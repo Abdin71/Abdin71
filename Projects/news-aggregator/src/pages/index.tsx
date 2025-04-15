@@ -1,60 +1,59 @@
-import React, { useState, useEffect } from "react";
-import Navigation from "@/components/layout/Nav";
-import Footer from "@/components/layout/Footer";
-import Card from "@/components/content/Card";
-import Header from "@/components/layout/Header";
-import { Article } from "@/types/article";
+import React, { useEffect } from "react"
+import Navigation from "@/components/layout/Nav"
+import Footer from "@/components/layout/Footer"
+import Card from "@/components/content/Card"
+import Header from "@/components/layout/Header"
+import { useFetchNews } from "@/hooks/useFetchNews"
+import { useNewsStore } from "@/store/useNewsStore"
+import "../index.css"
 
-const categories = ["Technology", "Sports", "Politics", "Business"];
+export const categories = ["Technology", "Sports", "Politics", "Business"];
 
 const IndexPage: React.FC = () => {
-    const [selectedCategory,] = useState<string>(categories[0]);
-    const [articles, setArticles] = useState<Article[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const {
+        selectedCategory,
+        setSelectedCategory,
+        articles,
+        setArticles,
+    } = useNewsStore();
 
-    const fetchArticles = async (category: string) => {
-        setIsLoading(true);
-        try {
-            const response = await fetch(`/api/articles?category=${category}`);
-            const data = await response.json();
-            setArticles(data.articles);
-        } catch (error) {
-            console.error("Error fetching articles:", error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-    /*
-    const handleCategoryChange = (category: string) => {
-        setSelectedCategory(category);
-        fetchArticles(category);
-    };
-    */
+    const {
+        data: articlesData,
+        isLoading,
+        isError,
+    } = useFetchNews(selectedCategory);
 
     useEffect(() => {
-        fetchArticles(selectedCategory);
-    }, [selectedCategory]);
+        if (articlesData) {
+            setArticles(articlesData);
+        }
+    }, [articlesData, setArticles]);
+
+    const handleCategoryChange = (category: string) => {
+        setSelectedCategory(category);
+        setArticles(articlesData!);
+    }
 
     return (
-        <div className="flex flex-col min-h-screen bg-gray-50">
+        <div className="flex flex-col min-h-screen ">
             <Header />
-            <Navigation
-                categories={categories}
-            />
-            <main className="flex flex-col items-center px-4 py-6">
+            <Navigation categories={categories} onCategorySelect={handleCategoryChange} />
+            <main className="container mx-auto flex-1 px-4 py-6">
                 {isLoading ? (
-                    <div>Loading...</div>
+                    <div className="text-center text-gray-500">Loading...</div>
+                ) : isError ? (
+                    <div className="text-center text-red-500">Failed to load articles.</div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {articles.map((article) => (
-                            <Card key={article.id} article={article} />
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        {articles.map((article, index) => (
+                            <Card key={index} article={article} />
                         ))}
                     </div>
                 )}
             </main>
             <Footer />
         </div>
-    );
-};
+    )
+}
 
-export default IndexPage;
+export default IndexPage

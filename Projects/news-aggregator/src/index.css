@@ -1,3 +1,23 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --color: rgb(5, 5, 5);
+  --background-color: rgb(224, 224, 224);
+  --link-color: rgb(0, 188, 212);
+  --main-headline-color: rgb(233, 30, 99);
+  --accent-background-color: rgb(233, 30, 99);
+  --accent-color: rgb(5, 5, 5);
+
+}
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color: rgb(224, 224, 224);
+    --background-color: rgb(5, 5, 5);
+    --link-color: rgb(0, 188, 212);
+    --main-headline-color: rgb(233, 30, 99);
+    --accent-background-color: rgb(233, 30, 99);
+    --accent-color: rgb(224, 224, 224);
+  }
+}
+

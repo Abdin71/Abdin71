@@ -3,31 +3,25 @@ import { Card } from "@/components/ui/card";
 import CardHeaderComponent from "./CardHeader";
 import CardContentComponent from "./CardContent";
 import CardFooterComponent from "./CardFooter";
-import { Button } from "@/components/ui/button";
 import { Article } from "@/types/article";
+import ArticleDialog from './ArticleDialog';
 
 interface CardProps {
     article: Article;
 }
 
 const CardComponent: React.FC<CardProps> = ({ article }) => {
-    const [isBookmarked, setIsBookmarked] = useState(false);
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [open, setOpen] = useState(false);
 
-    const handleBookmark = () => {
-        setIsBookmarked((prev) => !prev);
-    };
-
-    const handleExpand = () => {
-        setIsExpanded((prev) => !prev);
-    };
-
-    const handleTagClick = (tag: string) => {
-        console.log("Filtering news by:", tag);
+    const handleClose = () => {
+        setOpen(false);
     };
 
     return (
-        <Card className="bg-white text-black p-4 rounded-2xl shadow-md">
+        <Card
+            className="text-black overflow-hidden border border-gray-100 relative cursor-pointer"
+            onClick={() => setOpen(!open)}
+        >
             <CardHeaderComponent
                 sourceName={article.source.name}
                 sourceLogo={article.source.logoUrl}
@@ -36,20 +30,17 @@ const CardComponent: React.FC<CardProps> = ({ article }) => {
             <CardContentComponent
                 imageUrl={article.imageUrl}
                 title={article.title}
-                timestamp={article.timestamp.toDateString()}
+                timestamp={article.timestamp}
+                tags={article.tags}
+                sourceUrl={article.url}
             />
             <CardFooterComponent
-                tags={article.tags}
-                handleTagClick={handleTagClick}
+                sourceName={article.source.name}
+                autherName={article.author.name}
             />
-            <div className="flex justify-between mt-4">
-                <Button variant="ghost" onClick={handleBookmark} className="text-black">
-                    {isBookmarked ? "Unbookmark" : "Bookmark"}
-                </Button>
-                <Button variant="ghost" onClick={handleExpand} className="text-black">
-                    {isExpanded ? "Collapse" : "Read More"}
-                </Button>
-            </div>
+
+            {/* Article Dialog */}
+            <ArticleDialog open={open} handleClose={handleClose} article={article} />
         </Card>
     );
 };

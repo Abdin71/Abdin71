@@ -10,8 +10,8 @@ interface TabItemProps {
 const TabItem: React.FC<TabItemProps> = ({ category, isActive, onClick }) => {
     return (
         <Button
-            variant={isActive ? "default" : "ghost"}
-            className={`text-black ${isActive ? "border-b-2 border-red-500" : ""}`}
+            variant={"ghost"}
+            className={`text-black hover:underline cursor-pointer ${isActive ? "font-bold" : "text-black"}`}
             onClick={onClick}
         >
             {category}

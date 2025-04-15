@@ -1,39 +1,74 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import SearchComponent from "../header/Search";
 import SignInComponent from "../header/SignIn";
+import { useAuth } from "@/hooks/useAuth";
+import { LogOut, Settings, UserCircle, Moon } from "lucide-react";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import NewsletterComponent from "../header/Newsletter";
+import useDarkMode from "@/hooks/useDarkMode";
+import newsaggregator from "@/assets/newsaggregator.svg";
 
 const Header: React.FC = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { user } = useAuth();
+    const [isDarkMode, toggleDarkMode] = useDarkMode();
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen((prev) => !prev);
+    const handleSignOut = async () => {
+        await signOut(auth);
     };
 
     return (
-        <header className="flex items-center justify-between p-4 bg-white shadow-md">
-            {/* Logo */}
-            <div className="text-xl font-bold text-black">NewsApp</div>
-
-            {/* Desktop Actions */}
-            <div className="hidden md:flex items-center gap-4">
-                <SearchComponent />
-                <SignInComponent />
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <Button variant="ghost" className="md:hidden" onClick={toggleMobileMenu}>
-                {isMobileMenuOpen ? <X size={24} className="text-black" /> : <Menu size={24} className="text-black" />}
-            </Button>
-
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="absolute top-16 left-0 w-full bg-white p-4 shadow-md flex flex-col items-center gap-4 md:hidden">
-                    <SearchComponent />
-                    <SignInComponent />
+        <header className="border-b border-gray-200 py-5">
+            <div className="container mx-auto flex items-center justify-between px-4">
+                {/* Logo */}
+                <div className="flex items-center cursor-pointer">
+                    <img
+                        src={newsaggregator}
+                        alt="NewsApp logo"
+                        width={50}
+                        height={30}
+                        className="h-7"
+                    />
+                    <span className="text-xl font-bold text-black">NewsApp</span>
                 </div>
-            )}
+
+                {/* Right section */}
+                <div className="hidden md:flex items-center gap-4">
+                    <NewsletterComponent />
+                    <SearchComponent />
+                    {user ? (
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <UserCircle className="h-7 w-7 text-black" />
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end" className="text-black bg-white">
+                                <DropdownMenuItem className="flex items-center gap-2">
+                                    <Settings size={16} />
+                                    My Preferences
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="flex items-center gap-2" onClick={toggleDarkMode}>
+                                    <Moon size={16} />
+                                    Dark Mode: {isDarkMode ? "On" : "Off"}
+                                </DropdownMenuItem>
+                                <DropdownMenuItem
+                                    className="flex items-center gap-2 text-red-600"
+                                    onClick={handleSignOut}
+                                >
+                                    <LogOut size={16} />
+                                    Sign Out
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    ) : (
+                        <SignInComponent />
+                    )}
+                </div>
+            </div>
         </header>
     );
 };

@@ -10,16 +10,18 @@ interface CardHeaderProps {
 
 const CardHeaderComponent: FC<CardHeaderProps> = ({ sourceName, sourceLogo, author }) => {
     return (
-        <CardHeader className="bg-white text-black p-4 rounded-2xl flex items-center gap-3">
-            <Avatar>
-                <AvatarImage src={sourceLogo} alt={sourceName} />
-                <AvatarFallback>{sourceName.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div>
-                <a href="#" className="text-lg font-semibold hover:underline">
-                    {sourceName}
-                </a>
-                {author && <p className="text-sm text-gray-500">{author}</p>}
+        <CardHeader className=" text-black rounded-2xl p-3 pb-0">
+            <div className="flex items-center gap-2">
+                <Avatar className="h-6 w-6">
+                    <AvatarImage src={sourceLogo} alt={sourceName} />
+                    <AvatarFallback>{sourceName.charAt(0)}</AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col">
+                    <p className="text-xs font-semibold hover:underline">
+                        {sourceName}
+                    </p>
+                    {author && <p className="text-sm text-gray-500">{author}</p>}
+                </div>
             </div>
         </CardHeader>
     );

@@ -1,26 +1,16 @@
 import { CardFooter } from "@/components/ui/card";
 import { FC } from "react";
-import { Button } from "@/components/ui/button";
 
 interface CardFooterProps {
-    tags: string[];
-    handleTagClick: (tag: string) => void;
+    sourceName: string;
+    autherName: string;
 }
 
-const CardFooterComponent: FC<CardFooterProps> = ({ tags, handleTagClick }) => {
+const CardFooterComponent: FC<CardFooterProps> = ({ sourceName, autherName }) => {
     return (
-        <CardFooter className="bg-white text-black p-4 rounded-2xl flex justify-between items-center">
+        <CardFooter className=" border-t border-gray-100 p-3 pt-1 text-xs text-gray-500">
             <div className="flex gap-2">
-                {tags.map((tag) => (
-                    <Button
-                        key={tag}
-                        variant="ghost"
-                        className="text-red-500 text-sm"
-                        onClick={() => handleTagClick(tag)}
-                    >
-                        {tag}
-                    </Button>
-                ))}
+                <p>{sourceName} • {autherName}</p>
             </div>
         </CardFooter>
     );
